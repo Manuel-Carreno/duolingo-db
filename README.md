@@ -25,6 +25,10 @@ Si desea clonar este repositorio para hacer uso del proyecto y ejecutar los scri
 | 01_schema.sql | 'Contiene el codigo para: creación de tablas, claves primarias/foráneas, restricciones e índices'|
 | 02_seed.sql |'Inserta datos de ejemplo (usuarios, idiomas, lecciones, ejercicios etc...) para todo tipo de consultas, pruebas y validación del modelo'|
 | 03_queries.sql| 'Contiene el codigo para realizar consultas'|
+| 04_function.sql| 'La función fn_total_xp_usuario, calcula el XP total acumulado por un usuario en todos los idiomas que esta estudiando. Para esto, suma el xp_acumulado de la tabla usuario_idioma segun el id_usuario de cada uno.'|
+| 05_triggers.sq| 'El trigger trg_usuario_idioma_leccion_ai se ejecuta automaticamente despues de insertar una nueva leccion en usuario_idioma_leccion, si la fila insertada incluye un valor en xp_obtenido lo sumara al xp_acumulado.'|
+| 06_transaction.sql| 'Este trigger se encarga de sumar XP al usuario y registra o actualiza una recompensa obtenida, si ambos son exitosos entonces se confirma el commit y de lo contrario se revierte con un rollback. ' |
+| 07_stored procedure.sql| 'El procedimiento sp_completar_leccion marca una leccion como completada, otorga su debido XP y entrega una recompensa. ' | 
 
 ## Orden de ejecución de comandos
 1. **Crear la base de datos y al usuario:**
