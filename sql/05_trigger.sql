@@ -1,3 +1,6 @@
+USE duolingo_db;
+
+DROP TRIGGER IF EXISTS trg_usuario_idioma_leccion_ai;
 -- Cambiamos delimitador para poder usar BEGIN...END
 DELIMITER $$
 
@@ -25,3 +28,6 @@ DELIMITER ;
 --
 -- Luego:
 -- SELECT xp_acumulado FROM usuario_idioma WHERE id_usuario = 1 AND id_idioma = 1;
+
+-- Completar una lección (esto activará el trigger)
+-- CALL sp_completar_leccion(1, 1, 3, 50);

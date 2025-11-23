@@ -1,0 +1,306 @@
+/* =================
+   PALETA DUOLINGO
+   ================= */
+:root {
+    --duo-green: #5cd10a;
+    --duo-green-dark: #3e8d06;
+    --duo-green-light: #b6ff7a;
+    --duo-text-light: #eaffec;
+    --duo-bg-dark: #0d1610;
+    --card-bg: #ffffff;
+}
+
+/* ===============================
+   ESTILO GENERAL
+   =============================== */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top, #1c2a22 0%, #1a2a20 100%);
+    color: var(--duo-text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ===============================
+   OPCIÓN B – Dúo como marca de agua
+   =============================== */
+body::before {
+    content: "";
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    width: 720px;
+    height: 720px;
+    transform: translate(-10%, -20%);
+    background-image: url('https://clipground.com/images/duolingo-clipart-7.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;                 /* Muy suave */
+    filter: blur(2px);
+    mix-blend-mode: overlay;       /* Se integra lindo con el fondo */
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ===============================
+   CONTENEDOR
+   =============================== */
+.container {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 95%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===============================
+   TÍTULOS
+   =============================== */
+h1, h2, h3 {
+    font-weight: 900;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: var(--duo-green-light);
+}
+
+h1, h2 {
+    text-shadow: 5px 5px 8px rgba(0,0,0,0.6);
+}
+
+h1 { font-size: 46px; }
+h2 { font-size: 36px; }
+h3 { font-size: 28px; }
+
+h1::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 5px;
+    background: var(--duo-green);
+    margin: 18px auto 0;
+    border-radius: 15px;
+    box-shadow: 0 0 12px #000;
+}
+
+/* ===============================
+   FORMULARIOS
+   =============================== */
+form {
+    background: var(--card-bg);
+    width: 95%;
+    max-width: 430px;
+    padding: 26px;
+    border-radius: 22px;
+    margin-top: 20px;
+    box-shadow: 0 8px 25px #00000055;
+    animation: fadeUp 0.6s ease;
+    color: #111;
+}
+
+/* Inputs */
+input, select {
+    width: 95%;
+    padding: 12px;
+    border-radius: 14px;
+    border: 2px solid #ccc;
+    margin-top: 8px;
+    font-size: 16px;
+    transition: 0.25s;
+    background: #fafafa;
+}
+
+input:focus, select:focus {
+    border-color: var(--duo-green);
+    box-shadow: 0 0 12px #5cd10a80;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 14px;
+    font-weight: bold;
+    color: #1b1b1b;
+}
+
+/* ===============================
+   BOTONES "GOMOSOS"
+   =============================== */
+button,
+a {
+    display: block;
+    width: 100%;
+    max-width: 430px;
+    text-align: center;
+    background: var(--duo-green);
+    color: #0a150c;
+    padding: 15px;
+    border-radius: 900px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 900;
+    margin-top: 18px;
+    transition: 0.2s;
+    box-shadow: 
+        0 6px 0 var(--duo-green-dark),
+        0 10px 20px #00000055;
+}
+
+button:hover,
+a:hover {
+    transform: translateY(-3px);
+    background: var(--duo-green-dark);
+}
+
+button:active,
+a:active {
+    transform: translateY(2px);
+}
+
+/* Botón rojo peligro */
+.danger-btn {
+    background: #e63946 !important;
+    box-shadow: 0 6px 0 #9c1f2a !important;
+    color: #fff; 
+}
+
+.danger-btn:hover {
+    background: #991f28 !important;
+}
+
+.danger-btn:active {
+    background: #6b141b !important;              /* Rojo muy oscuro al hacer clic */
+    transform: translateY(2px);                  /* Efecto de presión */
+}
+
+/* ===============================
+   TARJETAS
+   =============================== */
+.card {
+    background: var(--card-bg);
+    width: 95%;
+    max-width: 430px;
+    padding: 22px;
+    border-radius: 18px;
+    margin-top: 22px;
+    box-shadow: 0 8px 25px #00000055;
+    animation: fadeUp 0.6s ease;
+    color: #111;
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--duo-green-dark);
+}
+
+/* ===============================
+   ANIMACIÓN
+   =============================== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   BOTONES DE VISUALIZACIÓN (SECCIÓN VER TABLAS)
+   ============================================ */
+.visual-btn {
+    width: 100%;
+    max-width: 430px;
+    background: #ffffff20;
+    border: 2px solid var(--duo-green-light);
+    color: var(--duo-green-light);
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 12px;
+    text-decoration: none;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    transition: 0.25s;
+    box-shadow: 0 0 12px #00000055;
+}
+
+.visual-btn:hover {
+    background: #ffffff35;
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px #5cd10a90;
+}
+
+/* ==========================
+   TABLAS DE VISUALIZACIÓN
+   ========================== */
+.table-card {
+    width: 95%;
+    max-width: 480px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 18px;
+    margin-top: 25px;
+    box-shadow: 0 8px 25px #00000055;
+    color: #111;
+    overflow-x: auto; /* Para que nunca se desborde */
+}
+
+tr:hover {
+    background: #f1ffeb;
+}
+
+table { 
+    width: 90%; 
+    border-collapse: collapse; 
+    background: #fff; 
+    color: #111;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+        
+    th, td { 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+}
+
+th { 
+    background: var(--duo-green-light); 
+    color: #000; 
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.back-btn {
+    margin-top: 25px;
+    background: #ffffff20;
+    border: 2px solid var(--duo-green-light);
+    color: var(--duo-green-light);
+    padding: 12px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    max-width: 430px;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: #ffffff35;
+    transform: translateY(-3px);
+}

@@ -1,5 +1,6 @@
-USE duolingo;
+USE duolingo_db;
 
+DROP FUNCTION IF EXISTS fn_total_xp_usuario;
 -- Cambiamos el delimitador porque vamos a definir un bloque BEGIN...END
 DELIMITER $$
 
@@ -25,5 +26,5 @@ END$$
 -- Volvemos el delimitador al punto y coma normal
 DELIMITER ;
 
--- Ejemplo de uso:
+-- Ejemplo de uso: Ver XP total de un usuario
 -- SELECT fn_total_xp_usuario(1) AS xp_total_usuario_1;

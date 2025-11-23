@@ -4,28 +4,27 @@
 
 USE duolingo_db;
 
-INSERT INTO usuario (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, correo, contrasena, nacionalidad)
-VALUES
-('Ana', 'María', 'Gómez', 'López', 'ana@example.com', '12345', 'Colombia'),
-('Juan', NULL, 'Pérez', 'Rodríguez', 'juanp@example.com', 'abcde', 'México'),
-('Laura', 'Sofía', 'Martínez', 'Díaz', 'laura@example.com', 'pass1', 'Argentina'),
-('Pedro', NULL, 'Ramírez', 'Castillo', 'pedro@example.com', 'pass2', 'Chile'),
-('Camila', 'Andrea', 'Fernández', 'Vega', 'camila@example.com', 'pass3', 'Perú'),
-('Andrés', NULL, 'López', 'Ruiz', 'andres@example.com', 'pass4', 'Colombia'),
-('Valentina', 'Isabel', 'Torres', 'Moreno', 'valen@example.com', 'pass5', 'Uruguay'),
-('Carlos', 'Eduardo', 'Jiménez', 'Rojas', 'carlos@example.com', 'pass6', 'Ecuador'),
-('María', 'Paula', 'Herrera', 'Pérez', 'maria@example.com', 'pass7', 'Bolivia'),
-('David', 'Alejandro', 'Suárez', 'Martínez', 'david@example.com', 'pass8', 'España'),
-('Sofía', 'Lucía', 'Reyes', 'Cano', 'sofia@example.com', 'pass9', 'Colombia'),
-('Daniel', NULL, 'Cruz', 'Pineda', 'daniel@example.com', 'pass10', 'Argentina'),
-('Gabriela', 'Fernanda', 'Morales', 'Santos', 'gaby@example.com', 'pass11', 'México'),
-('Nicolás', 'Javier', 'Ortiz', 'García', 'nico@example.com', 'pass12', 'Chile'),
-('Lucía', 'Estefanía', 'Rincón', 'Navarro', 'lucia@example.com', 'pass13', 'Colombia'),
-('Felipe', 'Andrés', 'Vargas', 'Salazar', 'felipe@example.com', 'pass14', 'Ecuador'),
-('Sara', NULL, 'Rojas', 'Pérez', 'sara@example.com', 'pass15', 'Perú'),
-('Emilio', 'Andrés', 'Gómez', 'Luna', 'emilio@example.com', 'pass16', 'Colombia'),
-('Paula', 'Andrea', 'Cárdenas', 'Mora', 'paula@example.com', 'pass17', 'Venezuela'),
-('Esteban', 'David', 'Ramírez', 'Quintero', 'esteban@example.com', 'pass18', 'Uruguay');
+INSERT INTO usuario (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, correo, contrasena, nacionalidad) VALUES
+('Ana', 'María', 'Gómez', 'López', 'ana@example.com', '$2y$10$u1JqZRm1d7gkM9XG07sfiOMoytR6wLh9kOeI1P2vKhxJ6gfr9bT4G', 'Colombia'),
+('Juan', NULL, 'Pérez', 'Rodríguez', 'juanp@example.com', '$2y$10$w0KxvZr6bJq1zM5yQ9EjuuQ8xZpH0Xy2N6vFy1Pj7F0c/6JYq1t0K', 'México'),
+('Laura', 'Sofía', 'Martínez', 'Díaz', 'laura@example.com', '$2y$10$R5u1ZJ9xk8WcK4Yq2N8hKeN3P0vF3zY1H9bS4wV6D7jT1eK6qP0Gq', 'Argentina'),
+('Pedro', NULL, 'Ramírez', 'Castillo', 'pedro@example.com', '$2y$10$T1m9YxF2bQ4sW7K8vC2oUuJ5xZpF3aV1D6gH3yJ8N9mB0Q2R7pE6', 'Chile'),
+('Camila', 'Andrea', 'Fernández', 'Vega', 'camila@example.com', '$2y$10$N0p8BzK1qR5wL6M7sT9yUvG4xPzH2eK1J6nW9vR4D3bC8Z7qF1eK', 'Perú'),
+('Andrés', NULL, 'López', 'Ruiz', 'andres@example.com', '$2y$10$H3xR1D8vJ5nS2K6bW0yQvL9pZsH7tF4X1cJ5mR8N6yT2pK1eV7oQ', 'Colombia'),
+('Valentina', 'Isabel', 'Torres', 'Moreno', 'valen@example.com', '$2y$10$F2vQ1H9pZ6kW4L5sT7bYvN3xG0dE1R5M6oJ3yP9K8nV4wC1eZ2xQ', 'Uruguay'),
+('Carlos', 'Eduardo', 'Jiménez', 'Rojas', 'carlos@example.com', '$2y$10$K9wV1X6rB7cT2M8sQ3nHyP0vZ5kF4dJ1R6mS9oL2N7yU3eQ8tG1e', 'Ecuador'),
+('María', 'Paula', 'Herrera', 'Pérez', 'maria@example.com', '$2y$10$D1jQ4K7sP9wX2R5tN3eYvB0xZ6kF8cH1M5pJ2nV7Q4sL9yT6eW3o', 'Bolivia'),
+('David', 'Alejandro', 'Suárez', 'Martínez', 'david@example.com', '$2y$10$G4rH7Y2bQ1sL6T8nW3vKpX5xZ9dF0mJ2E6oN3yV7C1tP4eK9qR5o', 'España'),
+('Sofía', 'Lucía', 'Reyes', 'Cano', 'sofia@example.com', '$2y$10$P2vF9K6bT1qM3W5xR8yNzJ0pZ7kL2sH4D9cV6nR1E5yT3wQ8oK4e', 'Colombia'),
+('Daniel', NULL, 'Cruz', 'Pineda', 'daniel@example.com', '$2y$10$L3xQ7R2kV5bT8M1nS4yWvN6xZ0jF9cH2P5oJ1yR7K3eT4qC8vN2e', 'Argentina'),
+('Gabriela', 'Fernanda', 'Morales', 'Santos', 'gaby@example.com', '$2y$10$M0sT6N3kR1bV8L5xQ2yPwH9zZ4dF7cJ1K5oN2yR8E3qT6wC9pQ4e', 'México'),
+('Nicolás', 'Javier', 'Ortiz', 'García', 'nico@example.com', '$2y$10$V5kR2P8bJ1nS3M6tX9yWvN0xZ4dF7hJ2P5oN1yR8C3eT6qQ0vL2e', 'Chile'),
+('Lucía', 'Estefanía', 'Rincón', 'Navarro', 'lucia@example.com', '$2y$10$C7pN1M5kR2bT8L3xQ0yWvH6xZ9dF2jJ1K5oN3yR7E4qT9wC6vP1e', 'Colombia'),
+('Felipe', 'Andrés', 'Vargas', 'Salazar', 'felipe@example.com', '$2y$10$J2rK6P1bT4nS9M3xQ8yWvH0xZ5dF8cJ1P5oN2yR7E4tT9wC6qL1e', 'Ecuador'),
+('Sara', NULL, 'Rojas', 'Pérez', 'sara@example.com', '$2y$10$T6kR1P4bJ9nS2M7tX3yWvN5xZ8dF1hJ2P5oN1yR8C3eT6qQ0vL2e', 'Perú'),
+('Emilio', 'Andrés', 'Gómez', 'Luna', 'emilio@example.com', '$2y$10$B1pN5M2kR4bT8L3xQ0yWvH6xZ9dF2jJ1K5oN3yR7E4qT9wC6vP1e', 'Colombia'),
+('Paula', 'Andrea', 'Cárdenas', 'Mora', 'paula@example.com', '$2y$10$H3rK7P1bT4nS8M2xQ9yWvH0xZ5dF8cJ1P5oN2yR7E4tT9wC6qL1e', 'Venezuela'),
+('Esteban', 'David', 'Ramírez', 'Quintero', 'esteban@example.com', '$2y$10$D2kR6P1bJ3nS9M7tX4yWvN0xZ5dF8hJ2P5oN1yR8C3eT6qQ0vL2e', 'Uruguay');
 
 
 INSERT INTO idioma (nombre, nivel_maximo, codigo_iso, fecha_adicion)

@@ -10,7 +10,7 @@ CREATE OR REPLACE TABLE usuario (
   primer_apellido VARCHAR(30) NOT NULL,
   segundo_apellido VARCHAR(30),
   correo VARCHAR(50) NOT NULL,
-  contrasena VARCHAR(50) NOT NULL,
+  contrasena VARCHAR(255) NOT NULL,
   avatar VARCHAR(100),
   nacionalidad VARCHAR(50),
   fecha_registro DATE NOT NULL DEFAULT (CURRENT_DATE),
