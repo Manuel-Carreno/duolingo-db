@@ -7,6 +7,16 @@ Da continuidad a una fase previa en la que se elaboraron el diagrama de contexto
 
 El modelo integra los componentes esenciales del sistema: usuarios, idiomas, lecciones, ejercicios, ligas, rachas, notificaciones y recompensas, incluyendo las relaciones N:M resueltas mediante tablas puente.
 
+
+## Normalización (1FN, 2FN, 3FN)
+Durante el diseño del modelo relacional se aplico un proceso de normalización con el objetivo de reducir redundancias, inconsistencias y asegurar dependencias funcionales dentro de la base de datos inspirada en Duolingo. Este proceso nos permitio refinar las entidades y relaciones hasta cumplir con la tercera forma normal (3FN)
+
+- **Primera Forma Normal (1FN):** Se garantizo que todos los atributos fueran atomicos y que no existieran atributos compuestos o multivaluados.
+- **Segunda Forma Normal (2FN):** Se corrigieron dependencias parciales en tablas con claves compuestas, reorganizando las relaciones N:M de la base.
+- **Tercera Forma Normal (3FN):** Se eliminaron dependencias transitivas entre atributos no clave para evitar duplicidad y ambigüedad.
+
+
+
 ## Motor y Versión 
 - **Motor de base de datos:** MariaDB (compatible con MySQL)  
 - **Versión utilizada:** `10.11.13-MariaDB`  
