@@ -33,7 +33,7 @@ Para clonar este repositorio y ejecutar los scripts incluidos, asegúrese de cum
 
 ## Orden de ejecución de comandos
 1. **Crear la base de datos y el usuario:**
-"
+```
 sudo mysql
 CREATE DATABASE duolingo_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE duolingo_db;
@@ -43,9 +43,9 @@ GRANT ALL PRIVILEGES ON duolingo_db.* TO 'duolingo_user'@'localhost';
 FLUSH PRIVILEGES;
 
 EXIT;
-"
+```
 2. **Ejecutar scripts SQL desde la carpeta sql usando SOURCE:** 
-"
+```
 mysql -u duolingo_user -p duolingo_db
 SOURCE /ruta/a/tu/repositorio/sql/01_schema.sql;
 SOURCE /ruta/a/tu/repositorio/sql/02_seed.sql;
@@ -56,18 +56,18 @@ SOURCE /ruta/a/tu/repositorio/sql/06_transaction.sql;
 SOURCE /ruta/a/tu/repositorio/sql/07_stored_procedure.sql;
 SOURCE /ruta/a/tu/repositorio/sql/08_stored_procedure2.sql;
 EXIT;
-"
-- **Nota:** Ajuste la ruta a la carpeta sql según su sistema operativo y ubicación del repositorio.
+```
+**Nota:** Ajuste la ruta a la carpeta sql según su sistema operativo y ubicación del repositorio.
 
 ## Ejemplos de Uso
 1. **Función para obtener XP total de un usuario:**
-"SELECT fn_total_xp_usuario(1) AS xp_total_usuario_1;"
+```SELECT fn_total_xp_usuario(1) AS xp_total_usuario_1;```
 2. **Completar una lección con trigger y procedimiento:**
-"
+```
 CALL sp_completar_leccion(1, 1, 3, 50);
 SELECT xp_acumulado FROM usuario_idioma WHERE id_usuario = 1 AND id_idioma = 1;
-"
+```
 3. **Sumar XP y asignar recompensa manualmente:**
-"CALL sp_sumar_xp_y_recompensa(1, 1, 30, 1);"
+```CALL sp_sumar_xp_y_recompensa(1, 1, 30, 1);```
 4. **Eliminar un usuario y sus datos asociados:**
-"CALL sp_eliminar_usuario(1);"
+```CALL sp_eliminar_usuario(1);```
