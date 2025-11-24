@@ -1,4 +1,4 @@
--- 03_views.sql
+-- 09_views.sql
 USE duolingo_db;
 
 /* Perfil Público del Usuario: datos básicos + idiomas que estudia + nivel/XP. */
