@@ -69,7 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <button type="submit">Crear Lección</button>
 </form>
 
-<a href="index.php">⬅ Volver</a>
+<a href="index.php" class="back-btn">⬅ Volver</a>
+
+<div style="height: 120px;"></div>
 
 </div>
 

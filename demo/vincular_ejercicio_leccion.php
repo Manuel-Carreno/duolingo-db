@@ -42,6 +42,8 @@
 </form>
 
 <a href="index.php" class="back-btn">⬅ Volver</a>
+
+<div style="height: 120px;"></div>
 </div>
 
 <?php

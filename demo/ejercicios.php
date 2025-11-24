@@ -44,6 +44,8 @@ try {
 ?>
 </div>
 
-<a href="index.php" class="visual-btn">⬅ Volver</a>
+<a href="index.php" class="back-btn">⬅ Volver</a>
+
+<div style="height: 120px;"></div>
 </body>
 </html>

@@ -16,30 +16,35 @@ require "config.php";
 <div class="table-wrapper">
 <?php
 try {
-    $stmt = $pdo->query("SELECT * FROM usuario ORDER BY id_usuario ASC");
+    $stmt = $pdo->query("SELECT * FROM vw_usuario_perfil ORDER BY id_usuario ASC");
     $usuarios = $stmt->fetchAll();
-    if ($usuarios) {
-        echo "<table>";
-        echo "<tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo</th>
-                <th>Avatar</th>
-                <th>Nacionalidad</th>
-                <th>Fecha registro</th>
-              </tr>";
-        foreach ($usuarios as $u) {
-            echo "<tr>
-                    <td>{$u['id_usuario']}</td>
-                    <td>{$u['primer_nombre']} {$u['segundo_nombre']}</td>
-                    <td>{$u['primer_apellido']} {$u['segundo_apellido']}</td>
-                    <td>{$u['correo']}</td>
-                    <td>{$u['avatar']}</td>
-                    <td>{$u['nacionalidad']}</td>
-                    <td>{$u['fecha_registro']}</td>
-                  </tr>";
-        }
+    
+    if ($usuarios && count($usuarios) > 0) {
+
+	echo "<table>";
+	echo "<tr>
+		<th>ID</th>
+		<th>Nombre</th>
+		<th>Correo</th>
+		<th>Nacionalidad</th>
+		<th>Avatar</th>
+		<th>Idioma</th>
+		<th>Estado</th>
+		<th>XP</th>
+	      </tr>";
+
+	foreach ($usuarios as $u) {
+	    echo "<tr>
+		    <td>{$u['id_usuario']}</td>
+		    <td>{$u['nombre_completo']}</td>
+		    <td>{$u['correo']}</td>
+		    <td>{$u['nacionalidad']}</td>
+		    <td>{$u['avatar']}</td>
+		    <td>{$u['idioma']}</td>
+		    <td>{$u['estado_aprendizaje']}</td>
+		    <td>{$u['xp_acumulado']}</td>
+		  </tr>";
+	}
         echo "</table>";
     } else {
         echo "<p>No hay usuarios registrados.</p>";
@@ -50,6 +55,8 @@ try {
 ?>
 </div>
 
-<a href="index.php" class="visual-btn">⬅ Volver</a>
+<a href="index.php" class="back-btn">⬅ Volver</a>
+
+<div style="height: 120px;"></div>
 </body>
 </html>

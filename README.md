@@ -30,6 +30,7 @@ Para clonar este repositorio y ejecutar los scripts incluidos, asegúrese de cum
 - Permisos de administrador para crear bases de datos y usuarios
 
 ## Documentos del proyecto
+Dentro de la carpeta /sql encontrará:
 | Archivo | Descripción| 
 |--------------|--------------|
 | 01_schema.sql | Contiene la creación de tablas, claves primarias y foráneas, restricciones e índices. |
@@ -81,3 +82,20 @@ SELECT xp_acumulado FROM usuario_idioma WHERE id_usuario = 1 AND id_idioma = 1;
 ```CALL sp_sumar_xp_y_recompensa(1, 1, 30, 1);```
 4. **Eliminar un usuario y sus datos asociados:**
 ```CALL sp_eliminar_usuario(1);```
+
+## DEMO (cómo abrirlo)
+El repositorio incluye una carpeta /demo con un formulario PHP simple para probar las funciones y procedimientos.
+
+Para abrirlo:
+1. Copie la carpeta demo/ a su servidor local (Apache o XAMPP).
+2. Abra la ruta:
+http://localhost/duolingo-db/demo/index.php
+
+Desde allí puede:
+- Crear y eliminar usuarios
+- Visualizar tablas
+- Completar lecciones
+- Sumar XP
+- Ver cómo actúa el trigger
+- Ejecutar procedimientos
+- Probar la función de XP total

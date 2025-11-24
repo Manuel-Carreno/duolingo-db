@@ -12,11 +12,13 @@
 <h1>Asignar Recompensa a Usuario</h1>
 
 <div class="container">
-<!-- Formulario para seleccionar usuario -->
+
+<!-- SELECT USUARIO -->
 <form method="GET">
     <label>Usuario</label>
     <select name="id_usuario" onchange="this.form.submit()" required>
         <option value="">-- Seleccione un usuario --</option>
+
         <?php
         $stmt = $pdo->query("SELECT id_usuario, primer_nombre, primer_apellido FROM usuario");
         $usuarios = $stmt->fetchAll();
@@ -24,14 +26,16 @@
 
         foreach ($usuarios as $fila) {
             $selected = ($fila['id_usuario'] == $selectedUser) ? "selected" : "";
-            echo "<option value='{$fila['id_usuario']}' $selected>{$fila['primer_nombre']} {$fila['primer_apellido']}</option>";
+            echo "<option value='{$fila['id_usuario']}' $selected>
+                    ({$fila['id_usuario']}) {$fila['primer_nombre']} {$fila['primer_apellido']}
+                  </option>";
         }
         ?>
     </select>
 </form>
 
 <?php if ($selectedUser): ?>
-<!-- Formulario de asignación de recompensa -->
+<!-- ASIGNAR RECOMPENSA -->
 <form method="POST">
     <input type="hidden" name="id_usuario" value="<?= $selectedUser ?>">
 
@@ -40,8 +44,11 @@
         <?php
         $stmt = $pdo->query("SELECT id_recompensa, tipo, descripcion FROM recompensa ORDER BY id_recompensa ASC");
         $recompensas = $stmt->fetchAll();
+
         foreach ($recompensas as $fila) {
-            echo "<option value='{$fila['id_recompensa']}'>{$fila['tipo']} - {$fila['descripcion']}</option>";
+            echo "<option value='{$fila['id_recompensa']}'>
+                    ({$fila['id_recompensa']}) {$fila['tipo']} - {$fila['descripcion']}
+                  </option>";
         }
         ?>
     </select>
@@ -57,27 +64,27 @@
 <?php endif; ?>
 
 <a href="index.php" class="back-btn">⬅ Volver</a>
+<div style="height: 120px;"></div>
 </div>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_usuario = $_POST['id_usuario'];
-    $id_recompensa = $_POST['id_recompensa'];
-    $cantidad = $_POST['cantidad'] ?? 1;
-    $fecha_obtencion = $_POST['fecha_obtencion'] ?? date('Y-m-d');
+    $id_usuario     = $_POST['id_usuario'];
+    $id_recompensa  = $_POST['id_recompensa'];
+    $cantidad       = $_POST['cantidad'] ?? 1;
+    $fecha          = $_POST['fecha_obtencion'] ?? date('Y-m-d');
 
-    // Insertar en usuario_recompensa
     $stmt = $pdo->prepare("
         INSERT INTO usuario_recompensa (id_usuario, id_recompensa, cantidad, fecha_obtencion)
         VALUES (?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE cantidad = cantidad + VALUES(cantidad), fecha_obtencion = VALUES(fecha_obtencion)
+        ON DUPLICATE KEY UPDATE 
+            cantidad = cantidad + VALUES(cantidad),
+            fecha_obtencion = VALUES(fecha_obtencion)
     ");
 
-    if ($stmt->execute([$id_usuario, $id_recompensa, $cantidad, $fecha_obtencion])) {
-        echo "<p class='success'>Recompensa asignada correctamente.</p>";
-    } else {
-        echo "<p class='error'>Error al asignar la recompensa.</p>";
-    }
+    echo $stmt->execute([$id_usuario, $id_recompensa, $cantidad, $fecha])
+        ? "<p class='success'>Recompensa asignada correctamente.</p>"
+        : "<p class='error'>Error al asignar la recompensa.</p>";
 }
 ?>
 

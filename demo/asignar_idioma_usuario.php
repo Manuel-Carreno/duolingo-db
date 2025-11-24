@@ -62,7 +62,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 <?php endif; ?>
 
-<a href="index.php" class="btn-volver"><b>⬅ Volver</b></a>
+<a href="index.php" class="back-btn">⬅ Volver</a>
+
+<div style="height: 120px;"></div>
 
 </body>
 </html>

@@ -28,25 +28,79 @@ body {
 }
 
 /* ===============================
-   OPCIÓN B – Dúo como marca de agua
+   BÚHOS XL A LOS LADOS
    =============================== */
-body::before {
+body::before,
+body::after {
     content: "";
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-    width: 720px;
-    height: 720px;
-    transform: translate(-10%, -20%);
+    position: fixed;
+    top: 15%;
+    
+    /* Tamaño base gigante */
+    width: min(50vw, 1200px);     /* Intenta ser 1200px, pero no más del 50% del viewport */
+    height: auto;
+    aspect-ratio: 1 / 1;
+
     background-image: url('https://clipground.com/images/duolingo-clipart-7.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.8;                 /* Muy suave */
-    filter: blur(2px);
-    mix-blend-mode: overlay;       /* Se integra lindo con el fondo */
+
+    opacity: 0.13;
+    filter: blur(1px);
     pointer-events: none;
     z-index: -1;
 }
+
+/* Búho izquierdo */
+body::before {
+    left: max(-25vw, -350px);   /* Se asoma sin tocar el centro */
+    transform: scaleX(-1);
+}
+
+/* Búho derecho */
+body::after {
+    right: max(-25vw, -350px);
+}
+
+/* ===== Pantallas medianas ===== */
+@media (max-width: 1000px) {
+    body::before,
+    body::after {
+        width: min(60vw, 600px); /* Siguen grandes, pero controlados */
+        top: 20%;
+    }
+
+    body::before { left: -30vw; }
+    body::after  { right: -30vw; }
+}
+
+/* ===== Pantallas pequeñas (móvil) ===== */
+@media (max-width: 600px) {
+    body::before,
+    body::after {
+        width: min(70vw, 350px); /* Se reducen si toca, pero siguen presentes */
+        opacity: 0.10;
+        top: 25%;
+    }
+
+    body::before { left: -35vw; }
+    body::after  { right: -35vw; }
+}
+
+
+/* ===== Ajustes para pantallas muy pequeñas ===== */
+@media (max-width: 600px) {
+    body::before,
+    body::after {
+        width: min(45vw, 260px);  /* Más pequeño pero aún visible */
+        opacity: 0.10;
+        top: 25%;
+    }
+    
+    body::before { left: -20vw; }
+    body::after  { right: -20vw; }
+}
+
 
 /* ===============================
    CONTENEDOR
@@ -62,6 +116,66 @@ body::before {
 }
 
 /* ===============================
+   SECCIONES DEL DASHBOARD
+   =============================== */
+.panel-section {
+    width: 80%;
+    max-width: 700px;
+    margin-top: 40px;
+    padding: 0 20px;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    background: rgba(0, 0, 0, 0.25); /* tono suave */
+    border-radius: 18px;
+}
+
+.panel-section h3 {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 60px;
+    width: 100%;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.grid a {
+    width: 100%;
+    max-width: 240px; 
+}
+
+/* =====================================
+   CONTENEDORES OSCUROS DE SECCIÓN
+   ===================================== */
+.section-box {
+    width: 95%;
+    max-width: 1000px;
+    background: rgba(0, 0, 0, 0.35);  /* fondo oscuro suave */
+    padding: 40px;
+    border-radius: 22px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px #00000055;
+    backdrop-filter: blur(8px);
+    border: 1px solid #ffffff15;
+}
+
+/* Título dentro del contenedor */
+.section-box h3 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: var(--duo-green-light);
+    font-weight: 800;
+    text-shadow: 2px 2px 6px #000;
+}
+
+
+/* ===============================
    TÍTULOS
    =============================== */
 h1, h2, h3 {
@@ -70,6 +184,15 @@ h1, h2, h3 {
     margin-top: 20px;
     margin-bottom: 5px;
     color: var(--duo-green-light);
+}
+
+h1 {
+    font-size: 54px;                 /* Más grande */
+    color: #ffffff;                  /* BLANCO puro */
+    text-shadow: 0 0 12px #5cd10a90, /* Glow Duolingo */
+                 4px 4px 6px rgba(0,0,0,0.6);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 h1, h2 {
@@ -83,12 +206,12 @@ h3 { font-size: 28px; }
 h1::after {
     content: "";
     display: block;
-    width: 70px;
-    height: 5px;
+    width: 90px;
+    height: 6px;
     background: var(--duo-green);
     margin: 18px auto 0;
-    border-radius: 15px;
-    box-shadow: 0 0 12px #000;
+    border-radius: 20px;
+    box-shadow: 0 0 18px #5cd10a;
 }
 
 /* ===============================
@@ -179,6 +302,23 @@ a:active {
 .danger-btn:active {
     background: #6b141b !important;              /* Rojo muy oscuro al hacer clic */
     transform: translateY(2px);                  /* Efecto de presión */
+}
+
+.delete-btn {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #6b141b;
 }
 
 /* ===============================

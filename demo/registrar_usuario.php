@@ -55,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <button type="submit">Registrar</button>
     </form>
 
-    <a href="index.php" class="button">⬅ Volver</a>
+    <a href="index.php" class="back-btn">⬅ Volver</a>
+
+<div style="height: 120px;"></div>
   </body>
 </html>

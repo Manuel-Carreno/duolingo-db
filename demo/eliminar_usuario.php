@@ -1,19 +1,30 @@
 <?php
 require "config.php";
 
-$usuarios = $pdo->query("SELECT id_usuario, primer_nombre FROM usuario")->fetchAll();
-$mensaje = null;
+$mensaje = "";
+$tipoMensaje = "";
+
+// Traer lista de usuarios con ID + nombre + apellido
+$usuarios = $pdo->query("
+    SELECT id_usuario, primer_nombre, primer_apellido 
+    FROM usuario
+    ORDER BY id_usuario ASC
+")->fetchAll();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $id = $_POST["id_usuario"];
 
     try {
         $stmt = $pdo->prepare("CALL sp_eliminar_usuario(?)");
         $stmt->execute([$id]);
-        $mensaje = "✅ Usuario eliminado correctamente.";
+
+        $mensaje = "✔ Usuario eliminado correctamente.";
+        $tipoMensaje = "success";
 
     } catch (PDOException $e) {
         $mensaje = "❌ Error: " . $e->getMessage();
+        $tipoMensaje = "error";
     }
 }
 ?>
@@ -28,25 +39,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <h2>Eliminar Usuario</h2>
 
-<form method="POST">
-    <label>Usuario:
-        <select name="id_usuario" required>
-            <option value="">Selecciona...</option>
-            <?php foreach ($usuarios as $u): ?>
-                <option value="<?= $u['id_usuario'] ?>"><?= $u['primer_nombre'] ?></option>
-            <?php endforeach; ?>
-        </select>
-    </label>
-    <button type="submit" style="background-color:#e63946"><b>Eliminar</b></button>
-</form>
-
 <?php if ($mensaje): ?>
-    <div class="card">
-        <p><strong><?= $mensaje ?></strong></p>
-    </div>
+    <div class="message <?= $tipoMensaje ?>"><?= $mensaje ?></div>
 <?php endif; ?>
 
-<a href="index.php" class="btn-volver"><b>⬅ Volver</b></a>
+<div class="container">
 
+<form method="POST">
+
+    <label>Usuario:</label>
+    <select name="id_usuario" required>
+        <option value="">-- Selecciona un usuario --</option>
+
+        <?php foreach ($usuarios as $u): ?>
+            <option value="<?= $u['id_usuario'] ?>">
+                <?= $u['id_usuario'] ?> — <?= $u['primer_nombre'] . " " . $u['primer_apellido'] ?>
+            </option>
+        <?php endforeach; ?>
+
+    </select>
+
+    <button type="submit" class="delete-btn"><b>Eliminar</b></button>
+
+</form>
+
+<a href="index.php" class="back-btn">⬅ Volver</a>
+</div>
+
+<div style="height: 120px;"></div>
 </body>
 </html>
