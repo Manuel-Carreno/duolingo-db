@@ -12,12 +12,12 @@ El modelo integra los componentes y vistas esenciales del sistema: usuarios, idi
 ## Descripción del desarrollo de este proyecto
 En esta sección se explica cómo se avanzó en la construcción del proyecto, incluyendo los pasos, herramientas y decisiones tomadas, para servir de ejemplo a futuros estudiantes:
 
-1. **Planificación y Boceto Inicial**
+1. **Planificación y Boceto Inicial:**
     - Se definieron los objetivos del proyecto y las reglas de negocio de la aplicación.
     - Se realizó un boceto inicial en Miro para visualizar entidades, relaciones y flujos de información.
     - Se estableció un flujo de trabajo iterativo para refinar el modelo a medida que se avanzaba en el diseño. 
 
-2. **Modelado Conceptual (Modelo E-R)**
+2. **Modelado Conceptual (Modelo E-R):**
     - El modelo E-R representa la estructura conceptual de la base de datos, mostrando cómo interactúan los distintos componentes del sistema.
     - Se definieron cardinalidades, tipos de participación (total/parcial) y relaciones clave.
     - Se usó DrawDB para construir el modelo final, incorporando:
@@ -27,8 +27,7 @@ En esta sección se explica cómo se avanzó en la construcción del proyecto, i
     - El diseño conceptual se refleja en la base de datos implementada y en las 7 vistas definidas en el archivo 09_views.sql.
         - **Nota:** Se puede apreciar en la carpeta /bd tanto el archivo generado al exportar la base de datos como su modelo E-R generado en phpMyAdmin.
 
-3. **Normalización (1FN, 2FN, 3FN)**
-Durante el diseño del modelo relacional se aplico un proceso de normalización con el objetivo de reducir redundancias, inconsistencias y asegurar dependencias funcionales dentro de la base de datos inspirada en Duolingo. Este proceso permitió refinar las entidades y relaciones hasta cumplir con la tercera forma normal (3FN):
+3. **Normalización (1FN, 2FN, 3FN):** Durante el diseño del modelo relacional se aplico un proceso de normalización con el objetivo de reducir redundancias, inconsistencias y asegurar dependencias funcionales dentro de la base de datos inspirada en Duolingo. Este proceso permitió refinar las entidades y relaciones hasta cumplir con la tercera forma normal (3FN):
     - **Primera Forma Normal (1FN):** 
         - Todos los atributos son atómicos; se separaron nombres y apellidos en la tabla usuario.
         - Se crearon entidades para manejar listas multivaluadas (ej. usuario_idioma, usuario_liga).
@@ -41,13 +40,13 @@ Durante el diseño del modelo relacional se aplico un proceso de normalización 
 
 El resultado fue un modelo final eficiente, coherente y normalizado, listo para implementación en MariaDB.
 
-4. **Restricciones e Integridad**
+4. **Restricciones e Integridad:**
 Se implementaron reglas para garantizar la consistencia de los datos:
     - Claves primarias y foráneas, políticas CASCADE y RESTRICT.
     - Valores obligatorios y únicos, check constraints, y enumeraciones (ENUM) para tipos y estados.
     - Índices estratégicos para optimizar consultas frecuentes (usuario, correo, XP, ligas, lecciones, ejercicios, recompensas, notificaciones).
 
-5. **Implementación de Vistas**
+5. **Implementación de Vistas:**
 Se definieron 7 vistas principales para facilitar consultas y reportes:
     1. **vw_usuario_perfil:** Información básica y progreso del usuario por idioma.
     2. **vw_racha_actual:** Rachas activas de los usuarios.
